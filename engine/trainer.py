@@ -54,11 +54,11 @@ def do_train(
     # ------------
     # training
     # ------------
-    trainer = pl.Trainer()
+    trainer = pl.Trainer(devices=1, accelerator="gpu")
     trainer.fit(unet, train_loader, val_loader)
 
     # ------------
     # testing
     # ------------
-    result = trainer.test(test_dataloaders=test_loader)
+    result = trainer.test(test_dataloaders=val_loader)
     print(result)

@@ -1,7 +1,7 @@
-2022-03-16 16:57:43,608 template_model INFO: Using 1 GPUS
-2022-03-16 16:57:43,608 template_model INFO: Namespace(config_file='./configs/train_unet.yaml', opts=[])
-2022-03-16 16:57:43,609 template_model INFO: Loaded configuration file ./configs/train_unet.yaml
-2022-03-16 16:57:43,609 template_model INFO: 
+2022-03-17 02:59:22,227 template_model INFO: Using 1 GPUS
+2022-03-17 02:59:22,227 template_model INFO: Namespace(config_file='./configs/train_unet.yaml', opts=[])
+2022-03-17 02:59:22,227 template_model INFO: Loaded configuration file ./configs/train_unet.yaml
+2022-03-17 02:59:22,228 template_model INFO: 
 SOLVER:
   BASE_LR: 0.01
   WEIGHT_DECAY: 0.0001
@@ -11,7 +11,7 @@ TEST:
   IMS_PER_BATCH: 2
 
 OUTPUT_DIR: "./outputs/unet"
-2022-03-16 16:57:43,609 template_model INFO: Running with config:
+2022-03-17 02:59:22,228 template_model INFO: Running with config:
 DATALOADER:
   NUM_WORKERS: 8
 DATASETS:
