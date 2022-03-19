@@ -9,3 +9,12 @@ def jaccard(output, target):
     union = target.sum() + output.squeeze(1).sum() - intersection
     value = (intersection + 1e-15) / (union + 1e-15) 
     return value.item()
+    
+def aiu(output, target):
+    return 
+
+def ods(output, target):
+    return 
+
+def ios(output, target):
+    return 
