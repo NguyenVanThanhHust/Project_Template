@@ -37,9 +37,9 @@ _C.INPUT.MAX_SCALE_TRAIN = 1.2
 # Random probability for image horizontal flip
 _C.INPUT.PROB = 0.5
 # Values to be used for image normalization
-_C.INPUT.PIXEL_MEAN = [0.1307, ]
+_C.INPUT.PIXEL_MEAN = (0.485, 0.456, 0.406)
 # Values to be used for image normalization
-_C.INPUT.PIXEL_STD = [0.3081, ]
+_C.INPUT.PIXEL_STD = (0.229, 0.224, 0.225)
 
 # -----------------------------------------------------------------------------
 # Dataset

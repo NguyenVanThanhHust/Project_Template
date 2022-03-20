@@ -72,6 +72,7 @@ def do_train(
         optimizer,
         scheduler,
         loss_fn,
+        cfg, 
     ):
 
     my_model = LitModel(model, loss_fn, optimizer, )
@@ -79,7 +80,7 @@ def do_train(
     # ------------
     # training
     # ------------
-    trainer = pl.Trainer(devices=1, accelerator="gpu")
+    trainer = pl.Trainer(devices=1, accelerator="gpu", max_epochs=cfg.SOLVER.MAX_EPOCHS)
     trainer.fit(my_model, train_loader, val_loader)
 
     # ------------
