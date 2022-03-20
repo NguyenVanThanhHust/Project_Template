@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from evaluation.metrics import dice, jaccard
 
-class LitUnet(pl.LightningModule):
+class LitModel(pl.LightningModule):
     def __init__(self, model, loss, optim):
         super().__init__()
         self.model = model
@@ -17,6 +17,8 @@ class LitUnet(pl.LightningModule):
         self.train_jaccard_scores = []
         self.val_dice_scores = []
         self.val_jaccard_scores = []
+        self.test_dice_scores = []
+        self.test_jaccard_scores = []
 
     def forward(self, x):
         mask = self.model(x)
@@ -72,16 +74,31 @@ def do_train(
         loss_fn,
     ):
 
-    unet = LitUnet(model, loss_fn, optimizer, )
+    my_model = LitModel(model, loss_fn, optimizer, )
     
     # ------------
     # training
     # ------------
     trainer = pl.Trainer(devices=1, accelerator="gpu")
-    trainer.fit(unet, train_loader, val_loader)
+    trainer.fit(my_model, train_loader, val_loader)
 
     # ------------
     # testing
     # ------------
     result = trainer.test(test_dataloaders=val_loader)
+    print(result)
+
+def do_test(
+        model,
+        val_loader,
+        optimizer,
+        loss_fn,
+    ):
+
+    my_model = LitModel(model, loss_fn, optimizer, )
+    trainer = pl.Trainer(devices=1, accelerator="gpu")
+    # ------------
+    # testing
+    # ------------
+    result = trainer.test(model=my_model, test_dataloaders=val_loader)
     print(result)
