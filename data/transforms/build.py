@@ -9,9 +9,8 @@ from albumentations.pytorch import ToTensorV2
 from torchvision import datasets, transforms
 from torch.utils.data import Dataset, DataLoader
 
-def build_transforms(cfg, split="train"):
-    assert split in ["train", "test"], "split must be train or test"
-    if split == "train":
+def build_transforms(cfg, is_train=True):
+    if is_train:
         transform = A.Compose(
             [
                 A.Resize(cfg.INPUT.SIZE_TRAIN, cfg.INPUT.SIZE_TRAIN),

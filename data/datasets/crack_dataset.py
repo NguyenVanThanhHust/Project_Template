@@ -13,11 +13,16 @@ class CrackDataset(Dataset):
     """
     Crack dataset adapt from https://github.com/khanhha/crack_segmentation/blob/master/data_loader.py
     """
-    def __init__(self, data_folder, split="train", transform=None):
+    def __init__(self, data_folder, is_train=True, transform=None):
         self.data_folder = data_folder
         self.transform = transform
-        self.img_folder = join(self.data_folder, split, "images") 
-        self.mask_folder = join(self.data_folder, split, "masks") 
+        if is_train:
+            self.img_folder = join(self.data_folder, "train", "images") 
+            self.mask_folder = join(self.data_folder, "train", "masks") 
+        else:
+            self.img_folder = join(self.data_folder, "test", "images") 
+            self.mask_folder = join(self.data_folder, "test", "masks") 
+
         self.img_names = next(os.walk(self.img_folder))[2]
         self.transform = transform
     
